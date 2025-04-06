@@ -11,8 +11,8 @@ type ImagePageType = {
     }
 }
 
-const ImagePage = async ({params}: ImagePageType) => {
-    const {newsSlug} = await params
+const ImagePage = ({params}: ImagePageType) => {
+    const {newsSlug} = params
     const newsItem: NewsItemType | undefined = DUMMY_NEWS.find(newsItem => newsItem.slug == newsSlug)
 
     if (!newsItem) {

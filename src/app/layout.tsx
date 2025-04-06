@@ -14,12 +14,12 @@ export const metadata = {
 export default function RootLayout({children}: RootLayoutType) {
     return (
         <html lang="en">
-        <body>
-        <div id="page">
-            <MainHeader/>
-            {children}
-        </div>
-        </body>
+            <body>
+            <div id="page">
+                <MainHeader/>
+                {children}
+            </div>
+            </body>
         </html>
     )
 }
