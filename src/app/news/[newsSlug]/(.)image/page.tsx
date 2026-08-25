@@ -25,7 +25,6 @@ const IntercepterImagePage =  ({params}: ImagePageType) => {
 
     return (
         <>
-            <h2>Intercepted !!!</h2>
             <div className="modal-backdrop" onClick={router.back}/>
             <dialog className="modal" open>
                 <div className="fullscreen-image">
