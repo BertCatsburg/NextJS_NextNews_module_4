@@ -2,8 +2,7 @@ import Link from 'next/link';
 
 const HomePage = ()=>  {
   return (
-      <div id="home">
-          <h1>A News Site For The Next Generation</h1>
+      <>
           <p>
               Next News is here to deliver you all the latest news - concise &
               unbiased!
@@ -26,7 +25,7 @@ const HomePage = ()=>  {
           <p>
               <Link href="/news">Read the latest news</Link>
           </p>
-      </div>
+      </>
   );
 }
 

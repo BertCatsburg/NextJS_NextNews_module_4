@@ -1,6 +1,6 @@
 const TestPage = () => {
     return (
-        <p>This is in Marketing Route Group</p>
+        <p>This is a testpage in Marketing Route Group</p>
     )
 }
 

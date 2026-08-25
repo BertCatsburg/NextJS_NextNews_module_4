@@ -9,7 +9,10 @@ export const metadata = {
 const RootLayout = ({children}: PropsWithChildren) => {
     return (
         <main>
-            {children}
+            <div id="home">
+                <h1>A News Site For The Next Generation</h1>
+                {children}
+            </div>
         </main>
     )
 }
