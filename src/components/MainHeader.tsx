@@ -1,7 +1,9 @@
+"use server";
+
 import Link from 'next/link'
 import {NavLink} from "@/components";
 
-export const MainHeader = () => {
+export const MainHeader = async () => {
     return (
         <header id="main-header">
             <div id="logo"><Link href="/">NextNews</Link></div>

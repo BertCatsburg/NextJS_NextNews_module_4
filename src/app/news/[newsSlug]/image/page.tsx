@@ -19,6 +19,7 @@ const ImagePage = ({params}: ImagePageType) => {
         notFound()
     }
 
+    const x = `/images/news/${newsItem.image}`
     return (
         <div className="fullscreen-image">
             <Link href={`/news/${newsItem.slug}`}>

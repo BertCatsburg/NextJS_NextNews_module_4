@@ -10,3 +10,5 @@ This is the Course Profject of Section 4, called "Routing and Page Rendering - D
 ## Typescript
 While Max does the course in Javascript, I'm converting all the materials and exercises to Typescript
 
+## Problems?
+If you see any problems in the code, or things which can be even more Typescripty-ish, please let me know at bert@catsburg.com

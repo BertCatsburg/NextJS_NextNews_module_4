@@ -1,3 +1,5 @@
+"use server"
+
 import {NewsItemType} from "@/types/newsItem";
 import Link from "next/link";
 import {getAvailableNewsMonths, getAvailableNewsYears, getNewsForYear, getNewsForYearAndMonth, getMonthName} from "@/lib/news";
