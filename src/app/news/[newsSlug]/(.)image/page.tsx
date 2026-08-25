@@ -4,19 +4,18 @@ import Image from 'next/image'
 import {notFound, useRouter} from "next/navigation";
 import {NewsItemType} from "@/types/newsItem";
 import {DUMMY_NEWS} from '@/data/dummy-news';
-import Link from 'next/link'
+import Link from 'next/link';
+import { use} from 'react';
 
 
-type ImagePageType = {
-    params: {
-        newsSlug: string
-    }
-}
+// type ImagePageType = {
+//     newsSlug: string;
+// }
 
-const IntercepterImagePage =  ({params}: ImagePageType) => {
+const IntercepterImagePage =  (params: Promise<{newsSlug: string}>) => {
     const router = useRouter()
 
-    const {newsSlug} = params
+    const {newsSlug} = use(params);
     const newsItem: NewsItemType | undefined = DUMMY_NEWS.find(newsItem => newsItem.slug == newsSlug)
 
     if (!newsItem) {
