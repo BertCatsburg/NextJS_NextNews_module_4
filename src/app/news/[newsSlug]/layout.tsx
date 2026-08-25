@@ -1,12 +1,13 @@
-import {ReactNode} from "react";
+import React, {PropsWithChildren} from "react";
 
-type NewsDetailLayoutType = {
-    children: ReactNode
+interface NewsDetailLayout extends PropsWithChildren {
+    modal: React.ReactNode
 }
 
-const NewsDetailLayout = ({children}: NewsDetailLayoutType)=>  {
+const NewsDetailLayout = ({children, modal}: NewsDetailLayout)=>  {
     return (
         <>
+            {modal}
             {children}
         </>
     )
