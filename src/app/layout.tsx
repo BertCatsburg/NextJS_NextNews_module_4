@@ -1,17 +1,14 @@
 import './globals.css';
-import React from 'react'
+import React, {PropsWithChildren} from 'react'
 import {MainHeader} from "@/components";
 
-type RootLayoutType = {
-    children: React.ReactNode
-}
 
 export const metadata = {
     title: 'Next.js Page Routing & Rendering',
     description: 'Learn how to route to different pages.',
 }
 
-export default function RootLayout({children}: RootLayoutType) {
+export default function RootLayout({children}: PropsWithChildren) {
     return (
         <html lang="en">
             <body>

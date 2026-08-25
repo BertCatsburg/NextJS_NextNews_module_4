@@ -14,7 +14,7 @@ const ArchiveLayout = ({archive, latest}: ArchiveLayoutType) => {
             <section id="archive-filter">
                 {archive}
             </section>
-            <section id="archive-filter">
+            <section id="archive-latest">
                 {latest}
             </section>
         </div>
