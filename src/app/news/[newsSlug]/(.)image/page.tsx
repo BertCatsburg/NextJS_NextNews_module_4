@@ -8,11 +8,11 @@ import Link from 'next/link';
 import { use} from 'react';
 
 
-// type ImagePageType = {
-//     newsSlug: string;
-// }
+type ImagePageType = {
+    newsSlug: string;
+}
 
-const IntercepterImagePage =  (params: Promise<{newsSlug: string}>) => {
+const IntercepterImagePage = ({params}: { params: Promise<ImagePageType> }) => {
     const router = useRouter()
 
     const {newsSlug} = use(params);
