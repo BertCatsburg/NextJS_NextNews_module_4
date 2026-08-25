@@ -1,6 +1,5 @@
-import './globals.css'
-import {PropsWithChildren} from "react";
-
+import '../globals.css';
+import React, {PropsWithChildren} from 'react'
 
 export const metadata = {
     title: 'Next.js Page Routing & Rendering, module 4',
@@ -9,11 +8,9 @@ export const metadata = {
 
 const RootLayout = ({children}: PropsWithChildren) => {
     return (
-        <html lang="en">
-        <body>
-        {children}
-        </body>
-        </html>
+        <main>
+            {children}
+        </main>
     )
 }
 

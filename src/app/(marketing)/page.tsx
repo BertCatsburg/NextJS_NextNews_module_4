@@ -1,10 +1,8 @@
-// import logo from '@/assets/logo.jpg'
 import Link from 'next/link';
 
 const HomePage = ()=>  {
   return (
       <div id="home">
-          {/*<img src={logo.src} alt="A newspaper" />*/}
           <h1>A News Site For The Next Generation</h1>
           <p>
               Next News is here to deliver you all the latest news - concise &
