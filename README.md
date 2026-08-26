@@ -1,19 +1,20 @@
-# Routing in Rendering in NextJS
+# Routing in Rendering in Next.js
 
 ## Source
-This is the Udemy Course: "Learn NextJS 15 from the ground up and build fullstack ReactJS + NextJS apps with the App Router or Pages Router!"
+This is the Udemy Course: "Learn Next.js 15 from the ground up and build fullstack ReactJS + Next.js apps with the App Router or Pages Router!"
 by Maximilian Schwarzmüller
 
 ## This Project
-This is the Course Profject of Section 4, called "Routing and Page Rendering - Deep Dive"
+This is the Course Profject of Section 4, called "Routing and Page Rendering – Deep Dive"
 
 ## Typescript
-While Max does the course in Javascript, I'm converting all the materials and exercises to Typescript
+While Max does the course in JavaScript, I'm converting all the materials and exercises to TypeScript
 
 ## Problems?
 If you see any problems in the code, or things which can be even more Typescripty-ish, please let me know at bert@catsburg.com
 
 ## Versions
+### On the Next.js App
 ```bash
 $ node --version
 v24.19.0
@@ -42,4 +43,17 @@ $ npm ls
 ├── typescript@5.8.2
 ├── uuid@11.1.0
 └── xss@1.0.15
+```
+
+### On the Backend App
+Reinstall necessary because files from the download gave an error on 'npm install'
+
+```json
+{
+  "dependencies": {
+      "better-sqlite3": "^13.0.3",
+      "cors": "^2.8.6",
+      "express": "^5.2.1"
+  }
+}
 ```
