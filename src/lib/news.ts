@@ -34,7 +34,9 @@ export async function getAvailableNewsYears() {
     return uniqueYears;
 }
 
-export function getAvailableNewsMonths(year: number): number[] {
+export function getAvailableNewsMonths(year: number | undefined): number[] {
+    if (!year) return [];
+
     const months: {month: string}[] = db
         .prepare(
             "SELECT DISTINCT strftime('%m', date) as month FROM news WHERE strftime('%Y', date) = ?"
