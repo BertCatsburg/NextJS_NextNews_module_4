@@ -50,7 +50,7 @@ const DUMMY_NEWS = [
     },
 ];
 
-const db = sqlite('data.db');
+const db = sqlite('../../data.db');
 
 function initDb() {
     db.prepare(
