@@ -2,16 +2,45 @@
 
 import {NewsItemType} from "@/types/newsItem";
 import Link from "next/link";
-import {getAvailableNewsMonths, getAvailableNewsYears, getNewsForYear, getNewsForYearAndMonth, getMonthName} from "@/lib/news";
+import {
+    getAvailableNewsMonths,
+    getAvailableNewsYears,
+    getNewsForYear,
+    getNewsForYearAndMonth,
+    getMonthName
+} from "@/lib/news";
 import {NewsList} from "@/components";
+import React, {Suspense} from "react";
 
-type FilteresNewsPageType = {
+type FilteredNewsPageType = {
     params: Promise<{
         filter: string[]
     }>
 }
 
-const FilteredNewsPage = async ({params}: FilteresNewsPageType) => {
+const FilteredNews = async ({year, month}: {
+    year: number | undefined,
+    month: number | undefined
+}): Promise<React.ReactNode> => {
+    let news: NewsItemType[] = [];
+    if (year && !month) {
+        news = await getNewsForYear(year)
+    } else if (year && month) {
+        news = await getNewsForYearAndMonth(year, month)
+    }
+
+    // newsContent is the variable shown on the screen
+    let newsContent = <p>No News found for selected period.</p>
+
+    if (news.length > 0) {
+        newsContent = <NewsList news={news}/>
+    }
+
+    return newsContent
+}
+
+
+const FilteredNewsPage = async ({params}: FilteredNewsPageType) => {
 
     const {filter} = await params
 
@@ -19,29 +48,21 @@ const FilteredNewsPage = async ({params}: FilteresNewsPageType) => {
     const selectedYear = parseInt(filter?.[0])
     const selectedMonth = parseInt(filter?.[1])
 
-    let news: NewsItemType[] = [];
-    let links: number[] = [];
     const availableYears: number[] = await getAvailableNewsYears()
+    let links: number[] = availableYears;
 
-    // Fill links array with either years or months. Depends on the path
-    if (!selectedYear) {
-        links = availableYears  // Returns array of all News Years
-    }
+    // // Fill links array with either years or months. Depends on the path
+    // if (!selectedYear) {
+    //     links = availableYears  // Returns array of all News Years
+    // }
+
     if (selectedYear && !selectedMonth) {
-        news = await getNewsForYear(selectedYear)
         links = getAvailableNewsMonths(selectedYear) // Get all months for this year
     }
     if (selectedYear && selectedMonth) {
-        news = await getNewsForYearAndMonth(selectedYear, selectedMonth)
         links = []
     }
 
-    // newsContent is the variable shown on the screen
-    let newsContent = <p>No News found for selected period.</p>
-
-    if (news.length > 0) {
-        newsContent = <NewsList news={news} />
-    }
 
     links = links.sort()
 
@@ -73,7 +94,9 @@ const FilteredNewsPage = async ({params}: FilteresNewsPageType) => {
                     </ul>
                 </nav>
             </header>
-            {newsContent}
+            <Suspense fallback={<p>Loading News...</p>}>
+                <FilteredNews year={selectedYear} month={selectedMonth}/>
+            </Suspense>
         </>
     )
 }

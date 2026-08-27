@@ -2,11 +2,14 @@
 
 import {NewsList} from '@/components'; // This is a Server Component
 import {NewsItemType} from "@/types";
-import {getAllNews} from "@/lib/news";
 
 const NewsPage = async () => {
-    const news: NewsItemType[] = await getAllNews() as NewsItemType[] // Straight from the Database
+    const response = await fetch('http://localhost:8080/news')
+    if (!response.ok) {
+        throw new Error('Failed to fetch news');
+    }
 
+    const news: NewsItemType[] = await response.json()
 
     return (
         <>
