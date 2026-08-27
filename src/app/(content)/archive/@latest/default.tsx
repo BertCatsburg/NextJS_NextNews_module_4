@@ -8,7 +8,7 @@ const LatestNewsPage = () => {
     return (
         <>
             <h2>Latest News</h2>
-            <NewsList newslist={latestNews} />
+            <NewsList news={latestNews} />
         </>
     )
 }

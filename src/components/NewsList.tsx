@@ -1,14 +1,12 @@
-import {NewsItemType} from "@/types/newsItem";
 import Link from "next/link";
 import Image from "next/image";
+import {NewsItemType} from "@/types/newsItem";
 
-
-
-export const NewsList = ({newsList}: {newsList: NewsItemType[]}) => {
+export const NewsList = ({news}: {news: NewsItemType[]}) => {
     return (
         <ul className="news-list">
             {
-                newsList.map((newsItem: NewsItemType) => {
+                news.map((newsItem: NewsItemType) => {
                     return (
                         <li key={newsItem.id}>
                             <Link href={`/news/${newsItem.slug}`}>

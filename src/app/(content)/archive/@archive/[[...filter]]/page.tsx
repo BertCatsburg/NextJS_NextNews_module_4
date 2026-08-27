@@ -39,7 +39,7 @@ const FilteredNewsPage = async ({params}: FilteresNewsPageType) => {
     let newsContent = <p>No News found for selected period.</p>
 
     if (news.length > 0) {
-        newsContent = <NewsList newslist={news} />
+        newsContent = <NewsList news={news} />
     }
 
     links = links.sort()
