@@ -1,7 +1,7 @@
-import {DUMMY_NEWS} from "@/data/dummy-news";
 import Image from 'next/image'
 import {notFound} from "next/navigation";
 import Link from 'next/link'
+import {getNewsItem} from "@/lib/news";
 
 type NewsDetailsPageType = {
     params: Promise<{
@@ -11,13 +11,12 @@ type NewsDetailsPageType = {
 
 const NewsDetailsPage = async ({params}: NewsDetailsPageType) => {
     const {newsSlug} = await params
-    const newsItem = DUMMY_NEWS.find(newsItem => newsItem.slug == newsSlug)
+    const newsItem = await getNewsItem(newsSlug);
 
     if (!newsItem) {
         notFound()
     }
 
-    // TODO How komt die slug dan in Image terecht ????
     return (
         <article className="news-article">
             <header>

@@ -21,17 +21,18 @@ const FilteredNewsPage = async ({params}: FilteresNewsPageType) => {
 
     let news: NewsItemType[] = [];
     let links: number[] = [];
+    const availableYears: number[] = await getAvailableNewsYears()
 
     // Fill links array with either years or months. Depends on the path
     if (!selectedYear) {
-        links = getAvailableNewsYears()  // Returns array of all News Years
+        links = availableYears  // Returns array of all News Years
     }
     if (selectedYear && !selectedMonth) {
-        news = getNewsForYear(selectedYear)
+        news = await getNewsForYear(selectedYear)
         links = getAvailableNewsMonths(selectedYear) // Get all months for this year
     }
     if (selectedYear && selectedMonth) {
-        news = getNewsForYearAndMonth(selectedYear, selectedMonth)
+        news = await getNewsForYearAndMonth(selectedYear, selectedMonth)
         links = []
     }
 
@@ -45,7 +46,7 @@ const FilteredNewsPage = async ({params}: FilteresNewsPageType) => {
     links = links.sort()
 
     if (
-        selectedYear && !getAvailableNewsYears().includes(selectedYear) ||
+        selectedYear && !availableYears.includes(selectedYear) ||
         selectedMonth && !getAvailableNewsMonths(selectedYear).includes(selectedMonth)
     ) {
         // We have a selected year, but it is not part of the available years

@@ -1,22 +1,20 @@
-'use client'
+'use server';
 
 import Image from 'next/image'
-import {notFound, useRouter} from "next/navigation";
+import {notFound} from "next/navigation";
 import {NewsItemType} from "@/types/newsItem";
-import {DUMMY_NEWS} from '@/data/dummy-news';
 import Link from 'next/link';
-import { use} from 'react';
-
+import {getNewsItem} from "@/lib/news";
+import {ModalBackdrop} from "@/components/modal-backdrop";
 
 type ImagePageType = {
     newsSlug: string;
 }
 
-const IntercepterImagePage = ({params}: { params: Promise<ImagePageType> }) => {
-    const router = useRouter()
+const IntercepterImagePage = async ({params}: { params: Promise<ImagePageType> }) => {
 
-    const {newsSlug} = use(params);
-    const newsItem: NewsItemType | undefined = DUMMY_NEWS.find(newsItem => newsItem.slug == newsSlug)
+    const {newsSlug} = await params;
+    const newsItem: NewsItemType | undefined =  await getNewsItem(newsSlug);
 
     if (!newsItem) {
         notFound()
@@ -24,7 +22,7 @@ const IntercepterImagePage = ({params}: { params: Promise<ImagePageType> }) => {
 
     return (
         <>
-            <div className="modal-backdrop" onClick={router.back}/>
+            <ModalBackdrop/>
             <dialog className="modal" open>
                 <div className="fullscreen-image">
                     <Link href={`/news/${newsItem.slug}`}>

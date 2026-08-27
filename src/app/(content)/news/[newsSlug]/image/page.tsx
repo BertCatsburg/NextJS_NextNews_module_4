@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import {notFound} from "next/navigation";
 import {NewsItemType} from "@/types/newsItem";
-import {DUMMY_NEWS} from '@/data/dummy-news';
+import {getNewsItem} from "@/lib/news";
 import Link from 'next/link'
 
 
@@ -11,9 +11,9 @@ type ImagePageType = {
     }
 }
 
-const ImagePage = ({params}: ImagePageType) => {
-    const {newsSlug} = params
-    const newsItem: NewsItemType | undefined = DUMMY_NEWS.find(newsItem => newsItem.slug == newsSlug)
+const ImagePage = async ({params}: ImagePageType) => {
+    const {newsSlug} = await params
+    const newsItem: NewsItemType | undefined = await getNewsItem(newsSlug);
 
     if (!newsItem) {
         notFound()

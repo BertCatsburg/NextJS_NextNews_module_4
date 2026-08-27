@@ -2,7 +2,7 @@ import express from 'express';
 import sqlite from 'better-sqlite3';
 import cors from 'cors';
 
-const DUMMY_NEWS = [
+const INIT_NEWS = [
     {
         id: 'n1',
         slug: 'will-ai-replace-humans',
@@ -64,7 +64,7 @@ function initDb() {
             'INSERT INTO news (slug, title, content, date, image) VALUES (?, ?, ?, ?, ?)'
         );
 
-        DUMMY_NEWS.forEach((news) => {
+        INIT_NEWS.forEach((news) => {
             insert.run(news.slug, news.title, news.content, news.date, news.image);
         });
     }
