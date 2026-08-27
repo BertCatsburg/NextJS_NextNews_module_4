@@ -54,8 +54,6 @@ const FilteredNewsPage = async ({params}: FilteresNewsPageType) => {
         throw new Error('Invalid Filter')
     }
 
-    // Bit dirty: Link is the year.
-    // If you select the year, then the link is the month.
     return (
         <>
             <header id="archive-header">

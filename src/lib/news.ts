@@ -56,11 +56,13 @@ export async function getNewsForYear(year: number): Promise<NewsItemType[]> {
 }
 
 export async function getNewsForYearAndMonth(year: number, month:number): Promise<NewsItemType[]> {
+    const monthAsString = month.toString().padStart(2, '0')
     const news:NewsItemType[] = db
         .prepare(
             "SELECT * FROM news WHERE strftime('%Y', date) = ? AND strftime('%m', date) = ? ORDER BY date DESC"
         )
-        .all(year, month) as NewsItemType[]
+        .all(year.toString(), monthAsString) as NewsItemType[]
+    console.log(`Passed Month: ${monthAsString} and Year: ${year}`)
     await new Promise((resolve) => setTimeout(resolve, 500));
     return news;
 }
